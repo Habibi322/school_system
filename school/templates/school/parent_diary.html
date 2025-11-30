@@ -1,0 +1,23 @@
+{% extends "school/base.html" %}
+
+{% block title %}Дневник детей — {{ user.get_full_name }}{% endblock %}
+
+{% block content %}
+<h2>Дневник моих детей</h2>
+{% if records %}
+    {% for r in records %}
+        <div class="record">
+            <strong>{{ r.student.user.get_full_name }}</strong> ({{ r.student.grade }})<br>
+            <strong>{{ r.date }}</strong> — {{ r.lesson.subject }}<br>
+            {% if r.score %}
+                Оценка: <strong>{{ r.score }}</strong>
+            {% endif %}
+            {% if r.homework %}
+                <br>ДЗ: {{ r.homework }}
+            {% endif %}
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Нет записей.</p>
+{% endif %}
+{% endblock %}

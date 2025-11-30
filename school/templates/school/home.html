@@ -1,0 +1,14 @@
+{% extends "school/base.html" %}
+
+{% block page_title %}Главная — Школьная система{% endblock %}
+
+{% block content %}
+<h2>Добро пожаловать в школьную систему!</h2>
+<p>Этот портал предназначен для учеников, родителей и учителей начальной школы.</p>
+
+{% if not user.is_authenticated %}
+    <p style="color: #e74c3c;">
+        Пожалуйста, войдите для доступа к функциям.
+    </p>
+{% endif %}
+{% endblock %}
